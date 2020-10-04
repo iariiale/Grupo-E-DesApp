@@ -1,5 +1,6 @@
-Grupo-E-DesApp
 
-Integrantes:
-	-Ale Iara
-	-Guasch Gonzalo
+# Grupo-E-Desarollo
+
+Integrantes: 
+  * Iara Ale
+  * Gonzalo Guasch
