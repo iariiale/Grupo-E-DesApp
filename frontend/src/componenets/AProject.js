@@ -16,7 +16,7 @@ function AProject(props) {
             <div className={"project-card"}>
                 <div id={"project-name"}>{props.info.projectName}</div>
                 <div id={"locality-name-card"}>{props.info.locality.name}</div>
-                <div> {props.info.amountCollected}</div>
+                <div>💸{props.info.amountCollected}</div>
                 <input type={"button"}
                        className={'info-project-card'}
                        value={props.t('ver mas')}
