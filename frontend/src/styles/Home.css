@@ -1,0 +1,19 @@
+.log-in-home {
+  background-color: #8fa2cc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  width: 130px;
+  height: 37px;
+  font-size: 20px;
+  padding: 7px 0px 35px 0px;
+  margin: 15px 0px 0px 1100px;
+}
+
+.projects-tittle-home {
+  font-family: "Nunito", sans-serif;
+  -webkit-appearance: none;
+  margin: 50px 0px 100px 170px;
+  font-weight: normal;
+  font-size: 30px;
+}
