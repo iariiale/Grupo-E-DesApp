@@ -1,0 +1,10 @@
+.box-locality {
+    -webkit-box-shadow: 3px 4px 8px 1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 3px 4px 8px 1px rgba(0,0,0,0.75);
+    box-shadow: 3px 4px 8px 1px rgba(0,0,0,0.75);
+
+    padding: 10px 10px 10px 10px;
+    border-radius: 12px;
+    margin-left: 40px;
+    margin-top: 30px;
+}

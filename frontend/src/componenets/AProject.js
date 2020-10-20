@@ -7,7 +7,7 @@ function AProject(props) {
 
     function seeProjectDetail() {
        props.history.push({
-           pathname: 'projectDetail',
+           pathname: 'projectWrapper',
            state: props.info
        })
     }
