@@ -1,6 +1,5 @@
 import React, {useState, useEffect, Fragment} from 'react'
 import '../styles/ProjectDetail.css'
-import LocalidadInfo from "./LocalidadInfo";
 import {withNamespaces} from 'react-i18next';
 import Bootstrap from 'bootstrap/dist/css/bootstrap.min.css';
 import {ProgressBar} from 'react-bootstrap'
@@ -14,7 +13,7 @@ function ProjectDetail(props) {
 
     useEffect(() => {
         setDetails(props.info);
-        axios.get('http://localhost:8080/project/moneyToCollect/' + props.info.projectName)
+        axios.get('https://pacific-shelf-14196.herokuapp.com/project/moneyToCollect/' + props.info.projectName)
         .then(res => setTotalMoney(res.data))
         .catch(e => console.log(e))
     },[]);
@@ -24,10 +23,13 @@ function ProjectDetail(props) {
             alert("Che no seas raton estas donando 0 pesos")
             return
         }
-        
+        if(amountToDonate < 0) {
+            alert("Tenes que donar algo mayor a cero, titan")
+            return
+        }        
         axios({
             method: 'post',
-            url: 'http://localhost:8080/project/makeDonation',
+            url: 'https://pacific-shelf-14196.herokuapp.com/project/makeDonation',
             data: {
                 "username": "usuarioUno",
                 "amountDonated": amountToDonate,
@@ -51,22 +53,23 @@ function ProjectDetail(props) {
             <div className={"project-info-container"}>
                 <h2 className={"tittle"}>{details.projectName}</h2>
               
-                <div>Lleva recaudad:{details.amountCollected}</div>
+                <div>{props.t('Lleva recaudad')}: {details.amountCollected}</div>
                 <div className={"progress-bar"}><ProgressBar now={progress} label={`${progress}%`}variant={'success'}/></div>
-                <div>Este proyecto le da internet a: {details.amountOfPopulationForProject} personas</div>
+                <div>{props.t('Este proyecto le da internet a')}: {details.amountOfPopulationForProject} {props.t('personas')}</div>
                 <input type={"number"}
+                       min="0"
                        value={amountToDonate}
                        onChange={(event) => setAmount(event.target.value)} 
                        className={"donar-number"}/>
                 <input type={"text"}
                        value={comment}
-                       placeholder={"Comentarios(optional)"}
+                       placeholder={props.t("Comentarios(optional)")}
                        className={"comment-container"}
                        onChange={(e) => setcomment(e.target.value)}
                        />
                
                 <input type={"button"}
-                       value={"Donar"}
+                       value={props.t("Donar")}
                        className={"donar-project-button"}
                        onClick={handleDonate}/>
             </div>

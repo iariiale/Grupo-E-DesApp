@@ -8,7 +8,7 @@ function ProjectsCards(props) {
   const[projects, setProjects] = useState([]);
 
   useEffect(() => {
-      axios.get('http://localhost:8080/project/all')
+      axios.get('https://pacific-shelf-14196.herokuapp.com/project/all')
           .then(res => setProjects(res.data))
           .catch(e => console.log(e))
   }, []);

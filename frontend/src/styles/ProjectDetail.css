@@ -15,7 +15,7 @@
 .donar-project-button {
     background-color: #8fa2cc;
     border-radius: 10px;
-   
+    border: none;
     width: 320px;
     height: 30px;
     color: #ffffff;

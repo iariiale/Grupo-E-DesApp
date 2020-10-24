@@ -6,9 +6,9 @@ function LocalidadInfo(props){
 
     return(
         <div className={"box-locality"}>
-            <p>Descripción </p>
-            <div>Proyecto en la localidad de <strong>{props.info.province}</strong></div>
-            <div>con una cantidad de poblacion de</div>
+            <p>{props.t('Descripción')}</p>
+            <div>{props.t('Proyecto en la localidad de')} <strong>{props.info.province}</strong></div>
+            <div>{props.t('con una cantidad de poblacion de')}</div>
             <div><strong>{props.info.amountOfPopulation}</strong> argentinxs</div>
         </div>
     )

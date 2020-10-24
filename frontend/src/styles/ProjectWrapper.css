@@ -12,3 +12,14 @@
 .projecto-item {
     order: 0;
 }
+
+.go-back-button {
+    margin-left: 31%;
+    border-radius: 10px;
+    border: none;
+    background-color: #8fa2cc;
+    color: #ffffff;
+    padding: 5px 20px;
+    height: 40px;
+    width: 100px;
+}
