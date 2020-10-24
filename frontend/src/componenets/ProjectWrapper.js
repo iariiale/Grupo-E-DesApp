@@ -8,8 +8,8 @@ function ProjectWrapper(props){
 
     return(
         <div className={"project-locality-container"}>
-            <ProjectDetail info={props.location.state}/>
-            <LocalidadInfo info={props.location.state.locality} />
+            <div className= {"projecto-item"}><ProjectDetail info={props.location.state}/></div>
+            <div className={"description-item"}><LocalidadInfo info={props.location.state.locality} /></div>
         </div>
     )
 }
