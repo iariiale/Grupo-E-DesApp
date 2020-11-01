@@ -1,14 +1,12 @@
 import React, { Fragment } from 'react';
 import '../styles/Home.css';
 import {withNamespaces} from 'react-i18next';
-import SearchBar from "./SearchBar";
 import ProjectsCards from "./ProjectsCards";
-
+import NavBar from './NavBar';
 function Home(props) {
   return (
       <Fragment>
-        <input type={"button"} value={props.t('Ingresar')} className={"log-in-home"} />
-        <SearchBar />
+        <NavBar history={props.history}/> 
         <h2 className={"projects-tittle-home"}>{props.t('Proyectos destacados')}</h2>
           <ProjectsCards history={props.history}/>
       </Fragment>
@@ -17,5 +15,3 @@ function Home(props) {
 
 export default withNamespaces()(Home);
 
-
-//  <h1>{t('projects')}</h1>
