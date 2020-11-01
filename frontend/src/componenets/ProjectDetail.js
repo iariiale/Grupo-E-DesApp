@@ -28,14 +28,14 @@ function ProjectDetail(props) {
             alert("Tenes que donar algo mayor a cero, titan")
             return
         }
-        if(userString) {
+        if(!userString) {
             alert("No podes donar si no estas registradx")
             return
         }
-        let userJSON = JSON.parse(userString)    
+        let userJSON = JSON.parse(userString)  
         axios({
             method: 'post',
-            url: 'https://pacific-shelf-14196.herokuapp.com/project/makeDonation',
+            url: 'http://localhost:8080/project/makeDonation',
             data: {
                 "username": userJSON.userName,
                 "amountDonated": amountToDonate,
