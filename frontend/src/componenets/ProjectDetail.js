@@ -19,6 +19,7 @@ function ProjectDetail(props) {
     },[]);
 
     function handleDonate(){
+        let userString = localStorage.getItem("user")
         if(amountToDonate === 0) {
             alert("Che no seas raton estas donando 0 pesos")
             return
@@ -26,12 +27,17 @@ function ProjectDetail(props) {
         if(amountToDonate < 0) {
             alert("Tenes que donar algo mayor a cero, titan")
             return
-        }        
+        }
+        if(userString) {
+            alert("No podes donar si no estas registradx")
+            return
+        }
+        let userJSON = JSON.parse(userString)    
         axios({
             method: 'post',
             url: 'https://pacific-shelf-14196.herokuapp.com/project/makeDonation',
             data: {
-                "username": "usuarioUno",
+                "username": userJSON.userName,
                 "amountDonated": amountToDonate,
                 "projectName": details.projectName
             }
