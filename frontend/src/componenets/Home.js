@@ -1,8 +1,10 @@
-import React, { Fragment } from 'react';
-import '../styles/Home.css';
+import React, { Fragment, useState } from 'react';
+import { useAuth0 } from "@auth0/auth0-react";
 import {withNamespaces} from 'react-i18next';
 import ProjectsCards from "./ProjectsCards";
 import NavBar from './NavBar';
+import '../styles/Home.css';
+
 function Home(props) {
   return (
       <Fragment>

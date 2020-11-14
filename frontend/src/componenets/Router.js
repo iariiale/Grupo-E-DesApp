@@ -12,7 +12,7 @@ export default function Router(){
                 <Route exact path='/' component={Home}/>
                 <Route exact path='/projectWrapper' component={ProjectWrapper}/>
                 <Route exact path='/login' component={Login} />
-                <Route exact path='userProfile' componenet={UserProfile} />
+                <Route exact path='/userProfile' componenet={UserProfile} />
                 <Route exact path='*' component={UserProfile}/>
             </Switch>
         </BrowserRouter>

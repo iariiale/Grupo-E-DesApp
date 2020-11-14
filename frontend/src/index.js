@@ -2,14 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Router from './componenets/Router';
+import { Auth0Provider } from "@auth0/auth0-react";
 import * as serviceWorker from './serviceWorker';
 import './i18n';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Auth0Provider
+  domain="desarollo.us.auth0.com"
+  clientId="JjWgSjVRNO0sKL7IDn1vQMTuNwkafiGF"
+  redirectUri={window.location.origin}
+>
     <Router />
-  </React.StrictMode>,
+  </Auth0Provider>,
   document.getElementById('root')
+  
 );
 
 // If you want your app to work offline and load faster, you can change

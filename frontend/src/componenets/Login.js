@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import '../styles/Login.css';
 import axios from 'axios';
+import LoginAuth from './LoginAuth';
+import LogOutAuth from './LogOutAuth';
 
 export default function Login(props) {
     const [username, setUsername] = useState('')
@@ -68,6 +70,7 @@ export default function Login(props) {
         setEmail(event.target.value)
         setEmailEmpty(false)
     }
+
     return(
         <div className={"log-in-container"}>
             <div className={"register-container"}>
@@ -94,7 +97,8 @@ export default function Login(props) {
             </div>
             <div>
                 <div className={"inicia-secion-login"}>Iniciar sesión</div>
-                <button className={"login-google-button"}>Google</button>
+                <LoginAuth></LoginAuth>
+                <LogOutAuth />
             </div>
 
         </div>
