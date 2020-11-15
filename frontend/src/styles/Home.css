@@ -17,3 +17,23 @@
   font-weight: normal;
   font-size: 30px;
 }
+
+.en-button{
+  background-color: #7c64bf;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  width: 70px;
+  height: 37px;
+  font-size: 20px;
+}
+
+.es-button{
+  background-color: #7c64bf;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  width: 70px;
+  height: 37px;
+  font-size: 20px;
+}
