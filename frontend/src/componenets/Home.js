@@ -33,6 +33,7 @@ function Home(props) {
         <NavBar history={props.history} showProjectsEnd={true}/> 
         <h2 className={"projects-tittle-home"}>{props.t('Proyectos destacados')}</h2>
           <ProjectsCards history={props.history}/>
+         
           {userJSON && userJSON.numberOfProjectsClosed >= 0  && <button onClick={() => addProject()}>🤫Agregar proyecto</button>}
           {userJSON && userJSON.numberOfProjectsClosed >= 0  && <button onClick={() => addLocality()}>🤫Agregar localidad🤫</button>}
       </Fragment>
