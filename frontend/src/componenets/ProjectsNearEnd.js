@@ -11,7 +11,7 @@ function ProjectsNearEnd(props) {
         axios.get('http://localhost:8080/project/getProjectsNearEndDate/')
         .then(res => setProjectsNearEnd(res.data))
         .catch(e => console.log(e))
-    })
+    }, [])
     function changeToEnglish(){
         i18n.changeLanguage("en")
       }

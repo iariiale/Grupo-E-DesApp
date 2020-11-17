@@ -14,7 +14,15 @@ function changeToSpanish(){
   i18n.changeLanguage("es")
 }
 
+
 function Home(props) {
+  let userString = localStorage.getItem("user")
+  let userJSON = JSON.parse(userString)
+  
+  function addButton(){
+    props.history.push('/addProject')
+  }
+
   return (
       <Fragment>
         <button onClick={changeToEnglish} className={"en-button"}>EN</button>
@@ -22,6 +30,7 @@ function Home(props) {
         <NavBar history={props.history} showProjectsEnd={true}/> 
         <h2 className={"projects-tittle-home"}>{props.t('Proyectos destacados')}</h2>
           <ProjectsCards history={props.history}/>
+          {userJSON && userJSON.numberOfProjectsClosed >= 0  && <button onClick={() => addButton()}>🤫Agregar botton</button>}
       </Fragment>
   );
 }

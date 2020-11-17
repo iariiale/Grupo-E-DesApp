@@ -15,6 +15,24 @@ export default function Login(props) {
     const [nicknameEmpty, setnicknameempty] = useState(false)
     const [emailEmpty, setEmailEmpty] = useState(false)
     
+    const [userLogin, setUserLogin] = useState('')
+    const [passwordLogin, setPasswordLogin] = useState('')
+
+    function logInUser() {
+        axios({
+            method: 'post',
+            url: 'http://localhost:8080/user/logIn',
+            data: { username: userLogin, 
+                    password:passwordLogin }
+        }).then(res => handleLogin(res.data))
+          .catch(e => alert(e))
+    }
+
+    function handleLogin(data) {
+        localStorage.setItem("user", JSON.stringify(data))
+        alert("User log succesfuly!")
+        props.history.push("/")
+    }
     function checkRegister() {
         if(username === '' || 
            passWord === '' || 
@@ -97,6 +115,13 @@ export default function Login(props) {
             </div>
             <div>
                 <div className={"inicia-secion-login"}>Iniciar sesión</div>
+                <input  type="text" 
+                        onChange={(event) => setUserLogin(event.target.value)}
+                        placeholder={"Username"} />
+                <input  type="password" 
+                        onChange={(event) =>setPasswordLogin(event.target.value)}
+                        placeholder={"Password"} />
+                <button onClick={() => logInUser()}>Enter</button>
                 <LoginAuth></LoginAuth>
                 <LogOutAuth />
             </div>
