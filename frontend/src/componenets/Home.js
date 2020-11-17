@@ -19,10 +19,13 @@ function Home(props) {
   let userString = localStorage.getItem("user")
   let userJSON = JSON.parse(userString)
   
-  function addButton(){
+  function addProject() {
     props.history.push('/addProject')
   }
 
+  function addLocality() {
+    props.history.push('/addLocality')
+  }
   return (
       <Fragment>
         <button onClick={changeToEnglish} className={"en-button"}>EN</button>
@@ -30,7 +33,8 @@ function Home(props) {
         <NavBar history={props.history} showProjectsEnd={true}/> 
         <h2 className={"projects-tittle-home"}>{props.t('Proyectos destacados')}</h2>
           <ProjectsCards history={props.history}/>
-          {userJSON && userJSON.numberOfProjectsClosed >= 0  && <button onClick={() => addButton()}>🤫Agregar botton</button>}
+          {userJSON && userJSON.numberOfProjectsClosed >= 0  && <button onClick={() => addProject()}>🤫Agregar proyecto</button>}
+          {userJSON && userJSON.numberOfProjectsClosed >= 0  && <button onClick={() => addLocality()}>🤫Agregar localidad🤫</button>}
       </Fragment>
   );
 }

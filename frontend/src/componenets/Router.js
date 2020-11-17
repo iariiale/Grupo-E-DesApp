@@ -6,6 +6,7 @@ import Login from './Login';
 import UserProfile from './userProfile'; 
 import ProjectsNearEnd from './ProjectsNearEnd'; 
 import AddProject from './AddProject';
+import AddLocality from './addLocality';
 
 export default function Router(){
     return (
@@ -17,6 +18,7 @@ export default function Router(){
                 <Route exact path='/userProfile' componenet={UserProfile} />
                 <Route path='/nearEndProjects' component={ProjectsNearEnd} />
                 <Route path='/addProject' component={AddProject} />
+                <Route path='/addLocality' component={AddLocality} />
                 <Route exact path='*' component={Home}/>
             </Switch>
         </BrowserRouter>    

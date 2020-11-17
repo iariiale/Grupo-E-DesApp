@@ -11,7 +11,7 @@ function AddProject(props) {
     const [factor, setFactor] = useState(0)
     const [localityName, setLocalityName] = useState('')
 
-    function uploadProject() {
+    function uploadProject(props) {
         axios({
             method: 'post',
             url: 'http://localhost:8080/project/save',
@@ -27,7 +27,9 @@ function AddProject(props) {
         }).then(res => console.log(res.data))
           .catch(e => console.log(e))
     }
-
+    function goBack(){
+        props.history.push("/")
+    }
     
     return(
         <Fragment>
@@ -58,7 +60,7 @@ function AddProject(props) {
         </div>
         <div>
             <button onClick={() => uploadProject()}>Add</button>
-            <button>Cancel</button>
+            <button onClick={() => goBack()}>Cancel</button>
         </div>
         </Fragment>
     )
