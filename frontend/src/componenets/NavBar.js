@@ -13,7 +13,7 @@ export default function Navbar(props) {
 
     function goToProfileOrRegister() {
         if(usernmaeOrEmpty) {
-            props.history.push('userProfile')
+            props.history.push('/profile')
         }else {
             props.history.push("/login")
         }

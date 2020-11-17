@@ -24,7 +24,6 @@ export default function UserProfile(props) {
 
     return(
         <Fragment>
-            <NavBar history={props.history} />
             <div className="userProfile-container">
                 <h2>{user.userName}</h2>
                 <div>Cantidad de puntos: {amountOfPoints}</div>

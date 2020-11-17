@@ -91,7 +91,7 @@ function ProjectDetail(props) {
                        value={props.t("Donar")}
                        className={"donar-project-button"}
                        onClick={handleDonate}/>
-                {userJSON &&    <input  type={"button"} c
+                {userJSON &&    <input  type={"button"} 
                                         onClick={() =>closeProject()}
                                         className={"donar-project-button"}
                                         id={"extra-margin-top"}
