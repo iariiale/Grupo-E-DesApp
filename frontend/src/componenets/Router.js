@@ -4,6 +4,7 @@ import Home from "./Home";
 import ProjectWrapper from "./ProjectWrapper";
 import Login from './Login';
 import UserProfile from './userProfile'; 
+import ProjectsNearEnd from './ProjectsNearEnd'; 
 
 export default function Router(){
     return (
@@ -13,7 +14,8 @@ export default function Router(){
                 <Route exact path='/projectWrapper' component={ProjectWrapper}/>
                 <Route exact path='/login' component={Login} />
                 <Route exact path='/userProfile' componenet={UserProfile} />
-                <Route exact path='*' component={UserProfile}/>
+                <Route path='/nearEndProjects' component={ProjectsNearEnd} />
+                <Route exact path='*' component={Home}/>
             </Switch>
         </BrowserRouter>
     );

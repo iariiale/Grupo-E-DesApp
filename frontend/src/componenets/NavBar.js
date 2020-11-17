@@ -24,7 +24,8 @@ export default function Navbar(props) {
                     value={value} 
                     className={"log-in-home"}
                     onClick={() => goToProfileOrRegister()}/>
-            <SearchBar />
+            <SearchBar history={props.history} 
+                       showProjectsEnd={props.showProjectsEnd}/>
         </Fragment>
     )
 }

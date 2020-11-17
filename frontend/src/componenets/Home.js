@@ -19,7 +19,7 @@ function Home(props) {
       <Fragment>
         <button onClick={changeToEnglish} className={"en-button"}>EN</button>
         <button onClick={changeToSpanish}className={"es-button"}>ES</button>
-        <NavBar history={props.history}/> 
+        <NavBar history={props.history} showProjectsEnd={true}/> 
         <h2 className={"projects-tittle-home"}>{props.t('Proyectos destacados')}</h2>
           <ProjectsCards history={props.history}/>
       </Fragment>

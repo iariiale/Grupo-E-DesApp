@@ -13,7 +13,9 @@ function ProjectsCards(props) {
           .catch(e => console.log(e))
   }, []);
 
-  let projects_to_show = projects.map((aProject, i) =>  <AProject info={aProject} history={props.history}/> );
+  let projects_to_show = projects.map((aProject, i) =>  <AProject   key={i} 
+                                                                    info={aProject}
+                                                                    history={props.history}/> );
   return(
         <Fragment>
             <div className={"projects-cards-container"}>
