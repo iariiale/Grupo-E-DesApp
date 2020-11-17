@@ -1,0 +1,39 @@
+.add-project-metacontainer {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    background-color: #f9f9f9;
+    margin-left: 265px;
+    padding: 1rem 1rem;
+}
+
+.add-project-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-add-admin {
+    width: 280px;
+    border: 1px solid #c4c4c4;
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    font-size: 16px;
+    color: #000;
+    font-weight: 300;
+    font-family: "Nunito", sans-serif;
+    -webkit-appearance: none;
+    margin-bottom: 30px;
+}
+
+#extra-margin-right {
+    margin-right: 5px;
+}
+
+.buttons-container {
+    margin-top: 20px;
+}
+
+.error-input {
+    color: #bd090a;
+}

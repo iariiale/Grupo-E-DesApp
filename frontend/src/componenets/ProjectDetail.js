@@ -10,6 +10,8 @@ function ProjectDetail(props) {
     const [amountToDonate, setAmount] = useState(0);
     const [comment, setcomment] = useState('');
     const [totalMoney, setTotalMoney] = useState(0);
+    let userString = localStorage.getItem("user")
+    let userJSON = JSON.parse(userString)
 
     useEffect(() => {
         setDetails(props.info);
@@ -18,7 +20,18 @@ function ProjectDetail(props) {
         .catch(e => console.log(e))
     },[]);
 
-    function handleDonate(){
+    function closeProject() {
+        axios({
+            url: 'http://localhost:8080/project/closeProject',
+            method: 'post',
+            data: {
+                "projectName": details.projectName, 
+                "userAdmin": userJSON.userName
+            }
+        })
+    }
+
+    function handleDonate() {
         let userString = localStorage.getItem("user")
         if(amountToDonate === 0) {
             alert("Che no seas raton estas donando 0 pesos")
@@ -78,6 +91,11 @@ function ProjectDetail(props) {
                        value={props.t("Donar")}
                        className={"donar-project-button"}
                        onClick={handleDonate}/>
+                {userJSON &&    <input  type={"button"} c
+                                        onClick={() =>closeProject()}
+                                        className={"donar-project-button"}
+                                        id={"extra-margin-top"}
+                                        value={"Close project"}/>}
             </div>
         </Fragment>
     )

@@ -6,7 +6,6 @@ export default function Paginator(props) {
     const [lastPage, setLastPage] = useState(0)
 
     function changePage(pageNumber) {
-        console.log(pageNumber)
         if(pageNumber >= 0) {
             axios.get('http://localhost:8080/project/get/' + pageNumber)
                 .then(res => props.onChangePage(res.data))

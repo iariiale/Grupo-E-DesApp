@@ -4,7 +4,6 @@ import {withNamespaces} from "react-i18next";
 
 
 function AProject(props) {
-
     function seeProjectDetail() {
        props.history.push({
            pathname: 'projectWrapper',
@@ -21,6 +20,7 @@ function AProject(props) {
                        className={'info-project-card'}
                        value={props.t('ver mas')}
                        onClick={seeProjectDetail}/>
+                        
             </div>
         </Fragment>
     )

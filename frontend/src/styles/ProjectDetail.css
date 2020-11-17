@@ -41,3 +41,7 @@
 .progress-bar{
     width: 100%;
 }
+
+#extra-margin-top {
+    margin-top: 20px;
+}
