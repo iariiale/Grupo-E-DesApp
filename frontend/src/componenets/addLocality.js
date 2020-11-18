@@ -1,6 +1,7 @@
 import React, {useState, useEffect, Fragment} from 'react'
 import {withNamespaces} from 'react-i18next';
 import axios from 'axios';
+import i18n from '../i18n';
 
 
 function AddLocality(props) {
@@ -8,7 +9,14 @@ function AddLocality(props) {
     const [province, setprovince] = useState('')
     const [amountOfPopulation, setamountOfPopulation] = useState(0)
     const [isConnected, setisConnected] = useState(false)
-    
+    function changeToEnglish(){
+        i18n.changeLanguage("en")
+        }
+        
+    function changeToSpanish(){
+    i18n.changeLanguage("es")
+    }
+
     function goBack() {
         props.history.push("/home")
     }
@@ -27,6 +35,8 @@ function AddLocality(props) {
     }
     return(
         <Fragment>
+        <button onClick={changeToEnglish} className={"en-button"}>EN</button>
+        <button onClick={changeToSpanish}className={"es-button"}>ES</button>
         <div>
             <input  type={"text"}
                     value={localityName}
@@ -44,8 +54,8 @@ function AddLocality(props) {
                     onChange={(event) => setisConnected(event.target.value)}placeholder={"Locality name"}/>
         </div>
         <div>
-            <button onClick={() => uploadLocality()}>Add</button>
-            <button onClick={() => goBack()}>Cancel</button>
+            <button onClick={() => uploadLocality()}>{props.t('Add')}</button>
+            <button onClick={() => goBack()}>{props.t('Cancel')}</button>
         </div>
         </Fragment>
     )

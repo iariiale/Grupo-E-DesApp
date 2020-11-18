@@ -10,5 +10,15 @@
  "Este proyecto le da internet a": "This project gives internet to",
  "personas": "people",
  "Comentarios(optional)": "Coments(optinal)",
- "Donar": "Donate"
+ "Donar": "Donate",
+ "Proyectos cerca de cierre": "Projects neear end",
+ "Agregar proyecto": "Add project",
+ "Agregar localidad": "Add locality",
+ "Nombre Proyecto": "Project Name",
+ "Porcentage minimo": "Minimun percentage",
+ "Fecha inicio proyecto": "Start project date",
+ "Fecha fin proyecto": "End project date",
+ "Factor(optional por defecto es 1009": "Factor(optional by default is 100)",
+ "Nombre de localidad": "Locality name",
+ "Cantidad de puntos": "Amount of points"
 }

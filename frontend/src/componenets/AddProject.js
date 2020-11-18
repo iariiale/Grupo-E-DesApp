@@ -2,6 +2,7 @@ import React, {useState, Fragment} from 'react'
 import {withNamespaces} from 'react-i18next';
 import axios from 'axios';
 import '../styles/AddProject.css';
+import i18n from '../i18n';
 
 function AddProject(props) {
     const [projectName, setProjectName] = useState('')
@@ -16,6 +17,13 @@ function AddProject(props) {
     const [dateError, setdateError] = useState(false)
     const [dateEndError, setdateEndError] = useState(false)
     const [localityError, setlocalityError] = useState(false)
+    function changeToEnglish(){
+        i18n.changeLanguage("en")
+        }
+        
+    function changeToSpanish(){
+    i18n.changeLanguage("es")
+    }
 
     function uploadProject() {
         if( projectName === "" || 
@@ -64,57 +72,60 @@ function AddProject(props) {
     
     return(
         <Fragment>
+        <button onClick={changeToEnglish} className={"en-button"}>EN</button>
+        <button onClick={changeToSpanish}className={"es-button"}>ES</button>
         <div className={"add-project-metacontainer"}>
             <div className={"add-project-container"}>
-            <div>Project Name</div>
+            <div>{props.t('Project Name')}</div>
             <input  type={"text"}
                     value={projectName}
                     className={"input-add-admin"}
                     onChange={(event) => setProjectName(event.target.value)} 
-                    placeholder={"Project name"}/>
+                    placeholder={props.t('Project Name')}/>
             {projectNameError && <div className={"error-input"}>Dont Leave the project name blank</div>}
-            <div>Minimun percentage</div>
+            <div>{props.t('Minimun percentage')}</div>
             <input  type={"number"} 
                     className={"input-add-admin"}
-                    placeholder={"Porcentage minimo"}
+                    placeholder={props.t('Minimun percentage')}
                     value={porMin}
                     onChange={(event) => setPorMin(event.target.value)}/>
             {porMinError && <div className={"error-input"}>Dont Leave the minum percentage blank</div>}
-            <div>Start project date</div>
+            <div>{props.t('Start project date')}</div>
             <input  type={"date"} 
                     className={"input-add-admin"}
                     value={date}
                     onChange={(event) => setDate(event.target.value)}
                     placeholder={"Start date"}/>
              {dateError && <div className={"error-input"}>Dont Leave the start projecte date blank</div>}
-            <div>End project date</div>
+            <div>{props.t('End project date')}</div>
             <input  type={"date"} 
                     className={"input-add-admin"}
                     value={endDate}
                     onChange={(event) => setEndDate(event.target.value)}
                     placeholder={"End date"}/>
              {dateEndError && <div className={"error-input"}>Dont Leave the end date blank</div>}
-            <div>Factor(optional by default is 100)</div>
+            <div>{props.t('Factor(optional by default is 100)')}</div>
             <input type={"number"}
                     className={"input-add-admin"} 
                    value={factor}
                    onChange={(event)=> setFactor(event.target.value)}
                    placeholder={"factor"}/>
-            <div>Locality name</div>
+            <div>{props.t('Locality name')}</div>
             <input  type={"text"} 
                     className={"input-add-admin"}
                     value={localityName}
-                    onChange={(event) => setLocalityName(event.target.value)}placeholder={"Locality name"}/>
+                    onChange={(event) => setLocalityName(event.target.value)}
+                    placeholder={props.t('Locality name')}/>
              {localityError && <div className={"error-input"}>Dont Leave the locality blank</div>}
             <div className={"buttons-container"}>
                 <button className={"home-search-button"} 
                         onClick={() => uploadProject()}
                         id={"extra-margin-right"}>
-                            Add
+                        {props.t('Add')}
                 </button>
                 <button className={"home-search-button"} 
                         onClick={() => goBack()}>
-                            Cancel
+                            {props.t('Cancel')}
                             </button>
             </div>
             </div>

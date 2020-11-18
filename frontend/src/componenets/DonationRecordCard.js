@@ -1,6 +1,5 @@
 import React from 'react';
 import '../styles/DonationRecordCard.css';
-
 export default function DonationRecordCard(props) {
 
     return(

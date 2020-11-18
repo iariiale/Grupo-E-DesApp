@@ -34,8 +34,8 @@ function Home(props) {
         <h2 className={"projects-tittle-home"}>{props.t('Proyectos destacados')}</h2>
           <ProjectsCards history={props.history}/>
          
-          {userJSON && <button onClick={() => addProject()}>🤫Agregar proyecto</button>}
-          {userJSON && <button onClick={() => addLocality()}>🤫Agregar localidad🤫</button>}
+          {userJSON && <button onClick={() => addProject()}>🤫{props.t('Agregar proyecto')}</button>}
+          {userJSON && <button onClick={() => addLocality()}>🤫{props.t('Agregar localidad')}🤫</button>}
       </Fragment>
   );
 }
