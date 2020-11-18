@@ -80,30 +80,34 @@ function AddProject(props) {
             <input  type={"text"}
                     value={projectName}
                     className={"input-add-admin"}
-                    onChange={(event) => setProjectName(event.target.value)} 
+                    onChange={(event) => {setProjectName(event.target.value)
+                                          setprojectNameError(false) }} 
                     placeholder={props.t('Project Name')}/>
-            {projectNameError && <div className={"error-input"}>Dont Leave the project name blank</div>}
+            {projectNameError && <div className={"error-input"}>{props.t('Dont Leave the project name blank')}</div>}
             <div>{props.t('Minimun percentage')}</div>
             <input  type={"number"} 
                     className={"input-add-admin"}
                     placeholder={props.t('Minimun percentage')}
                     value={porMin}
-                    onChange={(event) => setPorMin(event.target.value)}/>
-            {porMinError && <div className={"error-input"}>Dont Leave the minum percentage blank</div>}
+                    onChange={(event) => {setPorMin(event.target.value)
+                                          setporMinError(false)}}/>
+            {porMinError && <div className={"error-input"}>{props.t('Dont Leave the minum percentage blank')}</div>}
             <div>{props.t('Start project date')}</div>
             <input  type={"date"} 
                     className={"input-add-admin"}
                     value={date}
-                    onChange={(event) => setDate(event.target.value)}
+                    onChange={(event) => {setDate(event.target.value)
+                                          setdateError(false)}}
                     placeholder={"Start date"}/>
-             {dateError && <div className={"error-input"}>Dont Leave the start projecte date blank</div>}
+             {dateError && <div className={"error-input"}>{props.t('Dont Leave the start projecte date blank')}</div>}
             <div>{props.t('End project date')}</div>
             <input  type={"date"} 
                     className={"input-add-admin"}
                     value={endDate}
-                    onChange={(event) => setEndDate(event.target.value)}
+                    onChange={(event) => {setEndDate(event.target.value)
+                                          setdateEndError(false)}}
                     placeholder={"End date"}/>
-             {dateEndError && <div className={"error-input"}>Dont Leave the end date blank</div>}
+             {dateEndError && <div className={"error-input"}>{props.t('Dont Leave the end date blank')}</div>}
             <div>{props.t('Factor(optional by default is 100)')}</div>
             <input type={"number"}
                     className={"input-add-admin"} 
@@ -114,9 +118,10 @@ function AddProject(props) {
             <input  type={"text"} 
                     className={"input-add-admin"}
                     value={localityName}
-                    onChange={(event) => setLocalityName(event.target.value)}
+                    onChange={(event) => {setLocalityName(event.target.value)
+                                          setlocalityError(false)}}
                     placeholder={props.t('Locality name')}/>
-             {localityError && <div className={"error-input"}>Dont Leave the locality blank</div>}
+             {localityError && <div className={"error-input"}>{props.t('Dont Leave the locality blank')}</div>}
             <div className={"buttons-container"}>
                 <button className={"home-search-button"} 
                         onClick={() => uploadProject()}

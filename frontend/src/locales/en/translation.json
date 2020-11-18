@@ -20,5 +20,13 @@
  "Fecha fin proyecto": "End project date",
  "Factor(optional por defecto es 1009": "Factor(optional by default is 100)",
  "Nombre de localidad": "Locality name",
- "Cantidad de puntos": "Amount of points"
+ "Cantidad de puntos": "Amount of points",
+ "No dejes el nombre del proyecto vacio": "Dont Leave the project name blank",
+ "No dejes el porcentage minimo vacio": "Dont Leave the minum percentage blank",
+ "No dejes la fecha de inicio vacia": "Dont Leave the start projecte date blank",
+ "No dejes la fecha de fin vacia": "Dont Leave the end date blank",
+ "No dejes el nombre de la localidad vacia": "Dont Leave the locality blank",
+ "No dejes el nombre de la localidad vacio": "Dont Leave the locality name blank",
+ "Cantidad de poblacion invalido": "Invalid amount of population",
+ "No dejes el nombre de la provincia vacio": "Dont Leave the province name blank"
 }
