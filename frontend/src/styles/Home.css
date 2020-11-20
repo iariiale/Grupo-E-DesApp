@@ -37,3 +37,18 @@
   height: 37px;
   font-size: 20px;
 }
+
+
+@media (min-width: 350px) and (max-width: 767px) {
+  .projects-tittle-home {
+    font-family: "Nunito", sans-serif;
+    -webkit-appearance: none;
+    margin: 50px 0px 45px 14px;
+    font-weight: normal;
+    font-size: 30px;
+  }
+
+  .log-in-home {
+    margin: 15px 0px 0px 110px;
+  }
+}

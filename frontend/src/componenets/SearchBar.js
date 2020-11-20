@@ -16,13 +16,13 @@ function SearchBar(props) {
                 <input type={"text"} placeholder={props.t('Buscar')} className={"search-bar"}/>
                 <input type={"button"} value={props.t('Buscar')} className={"home-search-button"}/>
                 
-                {props.showProjectsEnd ?<input  type={"button"} 
-                                                value={props.t('Projects neear end')}
-                                                className={"home-search-button"}
-                                                id={"projects-end"}
-                                                onClick={() => getProjetsNearEnd()}/> :
+                {props.showProjectsEnd ? <input  type={"button"} 
+                                                 value={props.t('Projects neear end')}
+                                                 className={"home-search-button"}
+                                                 id={"projects-end"}
+                                                 onClick={() => getProjetsNearEnd()}/> :
 
-                                                <input  type={"button"} 
+                                        <input  type={"button"} 
                                                 value={props.t('Home')}
                                                 className={"home-search-button"}
                                                 id={"projects-end"}

@@ -68,10 +68,8 @@ function ProjectDetail(props) {
     let progress = calculateProgress()
     return(
         <Fragment>
-            
             <div className={"project-info-container"}>
                 <h2 className={"tittle"}>{details.projectName}</h2>
-              
                 <div>{props.t('Lleva recaudad')}: {details.amountCollected}</div>
                 <div className={"progress-bar"}><ProgressBar now={progress} label={`${progress}%`}variant={'success'}/></div>
                 <div>{props.t('Este proyecto le da internet a')}: {details.amountOfPopulationForProject} {props.t('personas')}</div>

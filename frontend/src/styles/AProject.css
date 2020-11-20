@@ -14,7 +14,7 @@
     height: 28%;
 
     margin: 0px 0px 25px 140px;
-    padding: 10px 60px 0px 50px;
+    padding: 10px 60px 30px 50px;
 }
 
 #project-name {
@@ -32,4 +32,12 @@
     color: white;
     width: 80px;
     border-radius: 8px;
+}
+
+@media (min-width: 360px) and (max-width: 900px) { 
+    .project-card {
+        width: 55%;
+        margin: 0px 0px 25px 50px;
+    }
+
 }

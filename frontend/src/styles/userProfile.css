@@ -4,3 +4,12 @@
    align-items: center;
    margin-top: 30px;
 }
+
+@media (min-width: 350px) and (max-width: 767px) {
+   
+   .userProfile-container {
+      display: flex;
+      width: 120%;
+      align-items: left;
+   }
+ }

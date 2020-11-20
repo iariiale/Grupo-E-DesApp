@@ -34,7 +34,6 @@ export default function UserProfile(props) {
         <Fragment>
         <button onClick={changeToEnglish} className={"en-button"}>EN</button>
         <button onClick={changeToSpanish}className={"es-button"}>ES</button>
-        
             <div className="userProfile-container">
                 <h2>{user.userName}</h2>
                 <div>{i18n.t('Amount of points')} {amountOfPoints}</div>

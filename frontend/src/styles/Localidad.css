@@ -8,3 +8,13 @@
     margin-left: 40px;
     margin-top: 30px;
 }
+
+@media (min-width: 340px) and (max-width: 900px) {
+    .box-locality {
+        border-radius: 12px;
+        margin-left: 60px;
+        margin-top: 30px;
+        width: 100%;
+    }
+
+}
