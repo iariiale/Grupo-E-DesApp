@@ -5,18 +5,15 @@ export default function RegisterAuthUser(props) {
     const [username, setUsername] = useState('')
     const [passWord, setPassword] = useState('')
     const [nickname, setNickname] = useState('')
-    const [email, setEmail] = useState('')
 
     const [usernameEmpty, setusernameempty] = useState(false)
     const [passwordEmpty, setpasswordeempty] = useState(false)
     const [nicknameEmpty, setnicknameempty] = useState(false)
-    const [emailEmpty, setEmailEmpty] = useState(false)
 
     function checkRegister() {
         if(username === '' || 
            passWord === '' || 
-           nickname === '' || 
-           email === '') {
+           nickname === '' ) {
               if(username === '') {
                  setusernameempty(true)
               }
@@ -26,16 +23,13 @@ export default function RegisterAuthUser(props) {
               if(nickname === '') {
                   setnicknameempty(true)
               }
-              if(email === '') {
-                setEmailEmpty(true)
-              }
            } else {
                 axios({
                     method: 'post',
                     url: 'http://localhost:8080/user/create',
                     data:  {
                         "userName": username,
-                        "email": email,
+                        "email": props.location.state.detail,
                         "password": passWord,
                         "nickName": nickname
                     }
@@ -63,10 +57,6 @@ export default function RegisterAuthUser(props) {
         setNickname(event.target.value)
         setnicknameempty(false)
     }
-    function updateEmail(event) {
-        setEmail(event.target.value)
-        setEmailEmpty(false)
-    }
 
     return (
         <div className={"register-container"}>
@@ -80,9 +70,9 @@ export default function RegisterAuthUser(props) {
                         className={passwordEmpty ? "empty-input" : "input-login-register"}
                         onChange={(event) => updatePassword(event)} />
                 <input  type={"text"} 
-                        placeholder={props.location.state.detail}
-                        className={emailEmpty ? "empty-input" : "input-login-register"}
-                        onChange={(event) => updateEmail(event)} />
+                        className={"input-login-register"}
+                        value={props.location.state.detail}
+                         />
                 <input  type={"text"} 
                         placeholder={"Nickname"}
                         className={nicknameEmpty ? "empty-input" : "input-login-register"}

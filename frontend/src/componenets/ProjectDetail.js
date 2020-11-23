@@ -15,7 +15,7 @@ function ProjectDetail(props) {
 
     useEffect(() => {
         setDetails(props.info);
-        axios.get('https://pacific-shelf-14196.herokuapp.com/project/moneyToCollect/' + props.info.projectName)
+        axios.get('http://localhost:8080/project/moneyToCollect/' + props.info.projectName)
         .then(res => setTotalMoney(res.data))
         .catch(e => console.log(e))
     },[]);
@@ -28,7 +28,8 @@ function ProjectDetail(props) {
                 "projectName": details.projectName, 
                 "userAdmin": userJSON.userName
             }
-        })
+        }).then(res => alert("Proyect closed!"))
+           .catch(e => console.log(e))
     }
 
     function handleDonate() {

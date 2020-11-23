@@ -28,6 +28,11 @@ export default function UserProfile(props) {
             .then(res => setRecords(res.data))
             .catch(e => console.log(e))
     }, [])
+
+    function logout() {
+        localStorage.removeItem("user")
+        props.history.push("/")
+    }
     let donationRecords = records.map((aRecord, i) => <DonationRecordCard info={aRecord} key={i} />)
 
     return(
@@ -39,8 +44,12 @@ export default function UserProfile(props) {
                 <div>{i18n.t('Amount of points')} {amountOfPoints}</div>
                 <div>{i18n.t('Registro de donaciones')}</div>
                 {donationRecords}
+                <div>
                 <button className={"home-search-button"}
                         onClick={() => props.history.goBack()}>Home</button>
+                <button className={"home-search-button"}
+                        onClick={() => logout()}>Log out</button>
+                </div>
             </div>
             
         </Fragment>
