@@ -34,7 +34,7 @@
     border-radius: 8px;
 }
 
-@media (min-width: 360px) and (max-width: 900px) { 
+@media (min-width: 340px) and (max-width: 900px) { 
     .project-card {
         width: 55%;
         margin: 0px 0px 25px 50px;

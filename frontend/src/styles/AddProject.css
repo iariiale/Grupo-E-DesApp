@@ -37,3 +37,17 @@
 .error-input {
     color: #bd090a;
 }
+
+
+@media (min-width: 340px) and (max-width: 900px) {
+    .add-project-metacontainer {
+        width: 80%;
+        margin-left: 40px;
+    }
+
+    .buttons-container {
+        margin-top: 20px;
+        display: flex;
+    }
+    
+}

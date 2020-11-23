@@ -1,4 +1,4 @@
-import React, {useState, useEffect, Fragment} from 'react'
+import React, {useState, Fragment} from 'react'
 import {withNamespaces} from 'react-i18next';
 import '../styles/AddProject.css';
 import axios from 'axios';
@@ -54,7 +54,7 @@ function AddLocality(props) {
                     "amountOfPopulation": amountOfPopulation,
                     "isConnected": isConnected
                 }
-            }).then(res => {alert("localidad uploaded")
+            }).then(() => {alert("localidad uploaded")
                            props.history.goBack()})
             .catch(e => console.log(e))
     }}
@@ -93,7 +93,7 @@ function AddLocality(props) {
                     placeholder={"Locality name"}/>
             {isConnectedError && <div className={"error-input"}>Invalid connected input</div>}        
         
-        <div>
+        <div className={"buttons-container"}>
             <button className={"home-search-button"}
                     id={"extra-margin-right"}
                     onClick={() => uploadLocality()}>{props.t('Add')}</button>
