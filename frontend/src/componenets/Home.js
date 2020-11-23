@@ -1,5 +1,4 @@
-import React, { Fragment, useState } from 'react';
-import { useAuth0 } from "@auth0/auth0-react";
+import React, { Fragment, useEffect, useState } from 'react';
 import {withNamespaces} from 'react-i18next';
 import ProjectsCards from "./ProjectsCards";
 import NavBar from './NavBar';
@@ -16,9 +15,10 @@ function changeToSpanish(){
 
 
 function Home(props) {
+
   let userString = localStorage.getItem("user")
   let userJSON = JSON.parse(userString)
-  
+
   function addProject() {
     props.history.push('/addProject')
   }

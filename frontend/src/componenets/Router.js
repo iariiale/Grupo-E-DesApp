@@ -7,12 +7,14 @@ import UserProfile from './userProfile';
 import ProjectsNearEnd from './ProjectsNearEnd'; 
 import AddProject from './AddProject';
 import AddLocality from './addLocality';
+import CheckUserAuth from './CheckUserAuth';
 
 export default function Router(){
     return (
         <BrowserRouter>
             <Switch>
                 <Route exact path='/' component={Home} />
+                <Route exact path='/checkUser' component={CheckUserAuth} />
                 <Route exact path='/projectWrapper' component={ProjectWrapper}/>
                 <Route exact path='/login' component={Login} />
                 <Route exact path='/profile' component={UserProfile}/>
