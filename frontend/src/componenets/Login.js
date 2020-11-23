@@ -116,12 +116,16 @@ export default function Login(props) {
             <div>
                 <div className={"inicia-secion-login"}>Iniciar sesión</div>
                 <input  type="text" 
+                        className={"input-login-register"}
                         onChange={(event) => setUserLogin(event.target.value)}
                         placeholder={"Username"} />
                 <input  type="password" 
+                        className={"input-login-register"}
                         onChange={(event) =>setPasswordLogin(event.target.value)}
                         placeholder={"Password"} />
-                <button onClick={() => logInUser()}>Enter</button>
+                <div><button className={"register-button"} 
+                             onClick={() => logInUser()}>Enter</button></div>
+                
                 <LoginAuth></LoginAuth>
                 <LogOutAuth />
             </div>
