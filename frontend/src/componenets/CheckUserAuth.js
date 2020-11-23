@@ -11,13 +11,16 @@ export default function CheckUserAuth(props) {
 
       function checkExistUser(existInBack) {
          if(existInBack) {
-             console.log("ASHUDA POR FAVOR")
             let userString = JSON.stringify(existInBack)
             localStorage.setItem("user", userString)
             props.history.push("/")
             setTimeout(() => {window.location.reload()}, 3000);
          } else {
-
+            props.history.push({
+                pathname: '/registerAuthUser',
+                state: {detail: user.email }
+            });
+            setTimeout(() => {window.location.reload()}, 3000);
          }
       }
       return (
