@@ -1,0 +1,13 @@
+---------------------------------------------------------------------
+TAG 3.0.0
+---------------------------------------------------------------------
+NEW FEATURES
+* Pagination was implemented in projects.
+* Implementation of user profile in detail with donations made.
+* Implementation of validations.
+* This app is responsive
+* HOME spa
+* Filter implementation with projects nearing completion.
+
+NOTES
+* Authentication with auth0
