@@ -12,7 +12,7 @@ function AProject(props) {
     }
     return(
         <Fragment>
-            <div className={"project-card"}>
+            <div className={props.info.finished ? "project-closed-card" : "project-card"}>
                 <div id={"project-name"}>{props.info.projectName}</div>
                 <div id={"locality-name-card"}>{props.info.locality.name}</div>
                 <div>💸{props.info.amountCollected}</div>

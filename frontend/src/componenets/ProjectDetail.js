@@ -2,6 +2,8 @@ import React, {useState, useEffect, Fragment} from 'react'
 import '../styles/ProjectDetail.css'
 import {withNamespaces} from 'react-i18next';
 import Bootstrap from 'bootstrap/dist/css/bootstrap.min.css';
+import { css } from "@emotion/core";
+import ClipLoader from "react-spinners/ClipLoader";
 import {ProgressBar} from 'react-bootstrap'
 import axios from 'axios'
 
@@ -10,9 +12,10 @@ function ProjectDetail(props) {
     const [amountToDonate, setAmount] = useState(0);
     const [comment, setcomment] = useState('');
     const [totalMoney, setTotalMoney] = useState(0);
+    const [loading, setLoading] = useState(false);
+
     let userString = localStorage.getItem("user")
     let userJSON = JSON.parse(userString)
-
     useEffect(() => {
         setDetails(props.info);
         axios.get('http://localhost:8080/project/moneyToCollect/' + props.info.projectName)
@@ -21,15 +24,17 @@ function ProjectDetail(props) {
     },[]);
 
     function closeProject() {
-        axios({
-            url: 'http://localhost:8080/project/closeProject',
-            method: 'post',
-            data: {
-                "projectName": details.projectName, 
-                "userAdmin": userJSON.userName
-            }
-        }).then(res => alert("Proyect closed!"))
-           .catch(e => console.log(e))
+         axios({
+                url: 'http://localhost:8080/project/closeProject',
+                method: 'post',
+                data: {
+                    "projectName": details.projectName, 
+                    "userAdmin": userJSON.userName
+                }
+            }).then(res => alert(res.data))
+               .catch(e => alert(e.request.response))
+        setTimeout( () => setLoading(false), 3200);
+        
     }
 
     function handleDonate() {
@@ -85,16 +90,25 @@ function ProjectDetail(props) {
                        className={"comment-container"}
                        onChange={(e) => setcomment(e.target.value)}
                        />
-               
-                <input type={"button"}
-                       value={props.t("Donar")}
-                       className={"donar-project-button"}
-                       onClick={handleDonate}/>
-                {userJSON &&    <input  type={"button"} 
-                                        onClick={() =>closeProject()}
-                                        className={"donar-project-button"}
-                                        id={"extra-margin-top"}
-                                        value={"Close project"}/>}
+                {details.finished ?<div className={"project-close-info"}>PROJECT CLOSE</div> :
+                                    <input  type={"button"}
+                                            value={props.t("Donar")}
+                                            className={"donar-project-button"}
+                                            onClick={handleDonate}/>  }
+                                    
+                {userJSON.numberOfProjectsClosed &&  !loading  &&  <input  type={"button"} 
+                                                    onClick={() =>{setLoading(true); setTimeout(
+                                                                                        () => closeProject(),   1000);}}
+                                                    className={"donar-project-button"}
+                                                    id={"extra-margin-top"}
+                                                    value={"Close project"}/>}
+                {userJSON.numberOfProjectsClosed &&  loading  &&  <div> 
+                                            <ClipLoader
+                                                size={150}
+                                                color={"#123abc"}
+                                                loading={loading} 
+                                            />
+                                            </div>}
             </div>
         </Fragment>
     )
