@@ -1,17 +1,21 @@
-import React, {useState, useEffect, Fragment} from 'react'
-import '../styles/ProjectDetail.css'
+import React, {useState, useEffect, Fragment} from 'react';
+import '../styles/ProjectDetail.css'; 
 import {withNamespaces} from 'react-i18next';
 import Bootstrap from 'bootstrap/dist/css/bootstrap.min.css';
 import { css } from "@emotion/core";
 import ClipLoader from "react-spinners/ClipLoader";
-import {ProgressBar} from 'react-bootstrap'
-import axios from 'axios'
+import {ProgressBar} from 'react-bootstrap';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import Comment from './Comment';
+import 'react-toastify/dist/ReactToastify.css';
 
 function ProjectDetail(props) {
     const [details, setDetails] = useState({});
     const [amountToDonate, setAmount] = useState(0);
-    const [comment, setcomment] = useState('');
+    const [comment, setCommentDonation] = useState('');
     const [totalMoney, setTotalMoney] = useState(0);
+    const [commnets, setcomments] = useState([])
     const [loading, setLoading] = useState(false);
 
     let userString = localStorage.getItem("user")
@@ -20,9 +24,23 @@ function ProjectDetail(props) {
         setDetails(props.info);
         axios.get('http://localhost:8080/project/moneyToCollect/' + props.info.projectName)
         .then(res => setTotalMoney(res.data))
-        .catch(e => console.log(e))
+        .catch(() => setTotalMoney(0))
+        axios.get('http://localhost:8080/project/getComments/' + props.info.projectName)
+        .then(res => setcomments(res.data))
+        .catch(() => setcomments([]))
     },[]);
-
+    function toastError(message) {
+        toast.configure();
+        return toast.error(message, {
+            position: toast.POSITION.TOP_CENTER
+          });
+    }
+    function toastInfo(message) {
+        toast.configure();
+        return toast.success(message, {
+            position: toast.POSITION.TOP_CENTER
+          });
+    }
     function closeProject() {
          axios({
                 url: 'http://localhost:8080/project/closeProject',
@@ -31,8 +49,8 @@ function ProjectDetail(props) {
                     "projectName": details.projectName, 
                     "userAdmin": userJSON.userName
                 }
-            }).then(res => alert(res.data))
-               .catch(e => alert(e.request.response))
+            }).then(res => toastInfo(res.data))
+               .catch(e => toastError(e.request.response))
         setTimeout( () => setLoading(false), 3200);
         
     }
@@ -40,30 +58,28 @@ function ProjectDetail(props) {
     function handleDonate() {
         let userString = localStorage.getItem("user")
         if(amountToDonate === 0) {
-            alert("Che no seas raton estas donando 0 pesos")
+            toastError("Che no seas ratón tenes que donar algo")
             return
         }
         if(amountToDonate < 0) {
-            alert("Tenes que donar algo mayor a cero, titan")
+            toastError("Tenes que donar algo mayor a cero, titan")
             return
         }
         if(!userString) {
-            alert("No podes donar si no estas registradx")
+            toastError("No podes donar si no estas registradx")
             return
         }
-        let userJSON = JSON.parse(userString)  
+        let userJSON = JSON.parse(userString)
         axios({
             method: 'post',
             url: 'http://localhost:8080/project/makeDonation',
             data: {
                 "username": userJSON.userName,
                 "amountDonated": amountToDonate,
-                "projectName": details.projectName
+                "projectName": details.projectName,
+                "comment": comment
             }
-        }).then(res => setDetails(  {'projectName': details.projectName,
-                                            'amountCollected': res.data,
-                                            'amountOfPopulationForProject': details.amountOfPopulationForProject,
-                                            'factor': details.factor}))
+        }).then(() => window.location.reload())
           .catch(e => console.log(e))
     }
     
@@ -72,6 +88,7 @@ function ProjectDetail(props) {
     }
 
     let progress = calculateProgress()
+    let comments_to_show = commnets.map((aComent, i) => aComent !== "" ? <Comment message={aComent} key={i} /> : null)
     return(
         <Fragment>
             <div className={"project-info-container"}>
@@ -88,27 +105,30 @@ function ProjectDetail(props) {
                        value={comment}
                        placeholder={props.t("Comentarios(optional)")}
                        className={"comment-container"}
-                       onChange={(e) => setcomment(e.target.value)}
+                       onChange={e => setCommentDonation(e.target.value)}
                        />
+                    
                 {details.finished ?<div className={"project-close-info"}>PROJECT CLOSE</div> :
                                     <input  type={"button"}
                                             value={props.t("Donar")}
                                             className={"donar-project-button"}
                                             onClick={handleDonate}/>  }
-                                    
-                {userJSON.numberOfProjectsClosed &&  !loading  &&  <input  type={"button"} 
+                
+                {userJSON && userJSON.numberOfProjectsClosed >= 0 &&  !loading  &&  
+                                            <input  type={"button"} 
                                                     onClick={() =>{setLoading(true); setTimeout(
-                                                                                        () => closeProject(),   1000);}}
+                                                                () => closeProject(),   1000);}}
                                                     className={"donar-project-button"}
                                                     id={"extra-margin-top"}
                                                     value={"Close project"}/>}
-                {userJSON.numberOfProjectsClosed &&  loading  &&  <div> 
+                {userJSON && userJSON.numberOfProjectsClosed >= 0 &&  loading  &&  <div> 
                                             <ClipLoader
                                                 size={150}
                                                 color={"#123abc"}
                                                 loading={loading} 
                                             />
                                             </div>}
+                {comments_to_show}
             </div>
         </Fragment>
     )

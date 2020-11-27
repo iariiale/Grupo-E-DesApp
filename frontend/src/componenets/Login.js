@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import '../styles/Login.css';
 import axios from 'axios';
 import LoginAuth from './LoginAuth';
-import LogOutAuth from './LogOutAuth';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Login(props) {
     const [username, setUsername] = useState('')
@@ -27,11 +28,16 @@ export default function Login(props) {
         }).then(res => handleLogin(res.data))
           .catch(e => alert(e))
     }
-
+    function toastInfo(message) {
+        toast.configure();
+        return toast.info(message, {
+            position: toast.POSITION.TOP_CENTER
+          });
+    }
     function handleLogin(data) {
         localStorage.setItem("user", JSON.stringify(data))
-        alert("User log succesfuly!")
-        props.history.push("/")
+        toastInfo('Log in exitoso!')
+        setTimeout(() => {props.history.push("/")}, 1000)
     }
     function checkRegister() {
         if(username === '' || 
@@ -67,10 +73,10 @@ export default function Login(props) {
     function handleRes(data) {
         let userString = JSON.stringify(data)
         localStorage.setItem("user", userString)
-        alert("Hura! te registraste correctamente")
-        props.history.push("/")
-        
+        toastInfo("Hura! te registraste correctamente")
+        setTimeout(() => {props.history.push("/")}, 1000)
     }
+
     function updateUsername(event) {
         setUsername(event.target.value)
         setusernameempty(false)
