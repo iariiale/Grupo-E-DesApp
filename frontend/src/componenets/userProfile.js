@@ -42,7 +42,7 @@ export default function UserProfile(props) {
             <div className="userProfile-container">
                 <h2>{user.username ? user.userName : user}</h2>
                 <div>{i18n.t('Amount of points')} {amountOfPoints}</div>
-                <div>{i18n.t('Registro de donaciones')}</div>
+                <div>{i18n.t('Donation registry')}</div>
                 {donationRecords}
                 <div>
                 <button className={"home-search-button"}

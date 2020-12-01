@@ -1,4 +1,5 @@
-{
+{   
+    "Log Out": "Cerrar Sesion",
     "Buscar": "Buscar",
     "Ingresar": "Ingresar",
     "Proyectos destacados": "Proyectos destacados",
@@ -11,6 +12,7 @@
     "personas": "personas",
     "Comentarios(optional)": "Comentarios(opcional)",
     "Donar": "Donar",
+    "Proyectos cerca de terminar":"Proyectos cerca de terminar",
     "Projects neear end": "Proyectos cerrando",
     "Add project": "Agregar proyecto",
     "Add locality": "Agregar localidad",
@@ -30,5 +32,7 @@
     "Dont Leave the locality blank": "No dejes el nombre de la localidad vacia",
     "Dont Leave the locality name blank": "No dejes el nombre de la localidad vacio",
     "Invalid amount of population": "Cantidad de poblacion invalido",
-    "Dont Leave the province name blank": "No dejes el nombre de la provincia vacio"
-   }
+    "Dont Leave the province name blank": "No dejes el nombre de la provincia vacio",
+    "Donation registry": "Registro de donaciones"
+
+}

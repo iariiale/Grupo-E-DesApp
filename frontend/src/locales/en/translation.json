@@ -1,10 +1,12 @@
-{
- "Buscar": "Search",
+{ 
+"Cerrar Sesion": "Log Out",
+"Buscar": "Search",
  "Ingresar": "Log in",
  "Proyectos destacados": "High profile projects",
  "ver mas": "Info",
  "Descripción": "Description",
  "Proyecto en la localidad de": "Project that support the locality of",
+ "Proyectos cerca de terminar":"Projects near completion",
  "con una cantidad de poblacion de": "with an amount of population of",
  "Lleva recaudado": "Collected",
  "Este proyecto le da internet a": "This project gives internet to",
