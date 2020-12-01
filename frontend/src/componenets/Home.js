@@ -4,6 +4,7 @@ import ProjectsCards from "./ProjectsCards";
 import NavBar from './NavBar';
 import '../styles/Home.css';
 import i18n from '../i18n';
+import axios from 'axios';
 
 function changeToEnglish(){
   i18n.changeLanguage("en")
@@ -15,9 +16,15 @@ function changeToSpanish(){
 
 
 function Home(props) {
-
+  const [isAdmin, setIsAdmin] = useState(false)
   let userString = localStorage.getItem("user")
-  let userJSON = JSON.parse(userString)
+  useEffect(() => {
+      if(userString){
+          axios.get('http://localhost:8080/user/isAdmin/' + JSON.parse(userString))
+          .then(res => setIsAdmin(res.data))
+          .catch(() => setIsAdmin(false))
+      }
+  })
 
   function addProject() {
     props.history.push('/addProject')
@@ -34,8 +41,8 @@ function Home(props) {
         <h2 className={"projects-tittle-home"}>{props.t('Proyectos destacados')}</h2>
           <ProjectsCards history={props.history}/>
          
-          {userJSON && userJSON.numberOfProjectsClosed >= 0 &&  <button className={"log-in-home"} onClick={() => addProject()}>🤫{props.t('Agregar proyecto')}</button>}
-          {userJSON && userJSON.numberOfProjectsClosed >= 0 &&  <button className={"log-in-home"} onClick={() => addLocality()}>🤫{props.t('Agregar localidad')}</button>}
+          {isAdmin &&  <button className={"log-in-home"} onClick={() => addProject()}>🤫{props.t('Agregar proyecto')}</button>}
+          {isAdmin &&  <button className={"log-in-home"} onClick={() => addLocality()}>🤫{props.t('Agregar localidad')}</button>}
       </Fragment>
   );
 }

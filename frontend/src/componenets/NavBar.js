@@ -6,7 +6,7 @@ export default function Navbar(props) {
     let usernmaeOrEmpty = localStorage.getItem("user")
     let value;
     if(usernmaeOrEmpty) {
-        value = JSON.parse(usernmaeOrEmpty).userName
+        value = usernmaeOrEmpty
     }else {
         value = 'Ingresar/Registrarse'
     }

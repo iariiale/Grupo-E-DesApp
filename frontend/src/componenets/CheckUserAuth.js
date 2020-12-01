@@ -11,8 +11,7 @@ export default function CheckUserAuth(props) {
 
       function checkExistUser(existInBack) {
          if(existInBack) {
-            let userString = JSON.stringify(existInBack)
-            localStorage.setItem("user", userString)
+            localStorage.setItem("user", JSON.stringify(existInBack.userName))
             props.history.push("/")
             setTimeout(() => {window.location.reload()}, 3000);
          } else {
@@ -25,7 +24,7 @@ export default function CheckUserAuth(props) {
       }
       return (
         isAuthenticated && (
-        <Fragment>{console.log(user)}{axios.get('http://localhost:8080/user/IsRegistred/' + user.email)
+        <Fragment>{axios.get('http://localhost:8080/user/IsRegistred/' + user.email)
             .then(res => checkExistUser(res.data))
             .catch(e => console.log(e))}</Fragment>
         )

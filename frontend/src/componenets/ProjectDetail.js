@@ -17,17 +17,26 @@ function ProjectDetail(props) {
     const [totalMoney, setTotalMoney] = useState(0);
     const [commnets, setcomments] = useState([])
     const [loading, setLoading] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(false)
 
     let userString = localStorage.getItem("user")
-    let userJSON = JSON.parse(userString)
     useEffect(() => {
-        setDetails(props.info);
+        if(userString){
+            axios.get('http://localhost:8080/user/isAdmin/' + JSON.parse(userString))
+            .then(res => setIsAdmin(res.data))
+            .catch(() => setIsAdmin(false))
+        }
+
+        axios.get('http://localhost:8080/project/getByName/' + props.info.projectName)
+        .then(res => setDetails(res.data))
+        .catch(() => setDetails({}))
         axios.get('http://localhost:8080/project/moneyToCollect/' + props.info.projectName)
         .then(res => setTotalMoney(res.data))
         .catch(() => setTotalMoney(0))
         axios.get('http://localhost:8080/project/getComments/' + props.info.projectName)
         .then(res => setcomments(res.data))
         .catch(() => setcomments([]))
+
     },[]);
     function toastError(message) {
         toast.configure();
@@ -47,7 +56,7 @@ function ProjectDetail(props) {
                 method: 'post',
                 data: {
                     "projectName": details.projectName, 
-                    "userAdmin": userJSON.userName
+                    "userAdmin": JSON.parse(userString)
                 }
             }).then(res => toastInfo(res.data))
                .catch(e => toastError(e.request.response))
@@ -69,12 +78,11 @@ function ProjectDetail(props) {
             toastError("No podes donar si no estas registradx")
             return
         }
-        let userJSON = JSON.parse(userString)
         axios({
             method: 'post',
             url: 'http://localhost:8080/project/makeDonation',
             data: {
-                "username": userJSON.userName,
+                "username": JSON.parse(userString),
                 "amountDonated": amountToDonate,
                 "projectName": details.projectName,
                 "comment": comment
@@ -114,14 +122,14 @@ function ProjectDetail(props) {
                                             className={"donar-project-button"}
                                             onClick={handleDonate}/>  }
                 
-                {userJSON && userJSON.numberOfProjectsClosed >= 0 &&  !loading  &&  
+                {isAdmin  && !loading  &&  
                                             <input  type={"button"} 
                                                     onClick={() =>{setLoading(true); setTimeout(
                                                                 () => closeProject(),   1000);}}
                                                     className={"donar-project-button"}
                                                     id={"extra-margin-top"}
                                                     value={"Close project"}/>}
-                {userJSON && userJSON.numberOfProjectsClosed >= 0 &&  loading  &&  <div> 
+                {isAdmin &&  loading  &&  <div> 
                                             <ClipLoader
                                                 size={150}
                                                 color={"#123abc"}
